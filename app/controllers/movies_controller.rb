@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   def search
-    @movies = ApiAdapter.search(params[:search_term])
+    @movies = ApiAdapter.search(search_term: params[:search_term])
     render json: @movies
   end
 
