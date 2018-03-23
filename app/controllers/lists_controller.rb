@@ -1,8 +1,8 @@
 class ListsController < ApplicationController
 
   def index
-    @lists = List.last
-    render json: ListSerializer.new(@lists)
+    @lists = List.all
+    render json: @lists, each_serializer: ListSerializer
   end
 
   def create
