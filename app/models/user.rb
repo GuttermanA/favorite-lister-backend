@@ -1,7 +1,16 @@
 class User < ApplicationRecord
-  has_many :list_movie_users
-  has_many :movies, through: :list_movie_users
-  has_many :lists, through: :list_movie_users
+  has_many :lists
   validates :name, uniqueness: true
-  has_secure_password
+  # has_secure_password
+
+  def movies
+    movies = []
+    self.lists.each do |list|
+      list.movies.each do |movie|
+        movies.push(movie)
+      end
+    end
+    movies
+  end
+
 end

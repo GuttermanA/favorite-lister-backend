@@ -10,22 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180322141424) do
+ActiveRecord::Schema.define(version: 20180323173902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "list_movie_users", force: :cascade do |t|
+  create_table "lists", force: :cascade do |t|
+    t.string "title"
     t.integer "user_id"
-    t.integer "list_id"
-    t.integer "movie_id"
-    t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "lists", force: :cascade do |t|
-    t.string "title"
+  create_table "movie_lists", force: :cascade do |t|
+    t.integer "list_id"
+    t.integer "movie_id"
+    t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

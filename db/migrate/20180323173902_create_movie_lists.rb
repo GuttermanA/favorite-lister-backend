@@ -1,7 +1,6 @@
-class CreateListMovieUsers < ActiveRecord::Migration[5.1]
+class CreateMovieLists < ActiveRecord::Migration[5.1]
   def change
-    create_table :list_movie_users do |t|
-      t.integer :user_id
+    create_table :movie_lists do |t|
       t.integer :list_id
       t.integer :movie_id
       t.integer :position

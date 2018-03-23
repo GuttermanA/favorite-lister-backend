@@ -1,6 +1,5 @@
 class Movie < ApplicationRecord
-  has_many :list_movie_users
-  has_many :users, through: :list_movie_users
-  has_many :lists, through: :list_movie_users
+  has_many :movie_lists
+  has_many :lists, through: :movie_lists
   validates :title, uniqueness: true
 end
