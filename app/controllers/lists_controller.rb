@@ -18,4 +18,18 @@ class ListsController < ApplicationController
       render json: {message: "Failure"}
     end
   end
+
+  def update
+    byebug
+    @list = List.find_by(id: params[:id])
+    if @list
+      params[:movies].each do |movie, index|
+        list_entry = MovieList.find_by(list_id: @list.id, movie_id: movie.id)
+        list_entry.update(position: index)
+      end
+      render json: {message: "List #{@list.title} updated"}
+    else
+      render json: {message: "Failed to update #{@list.title}"}
+    end
+  end
 end

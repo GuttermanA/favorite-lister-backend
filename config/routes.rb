@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   resources :movies, only: [:index, :create]
   resources :lists
   resources :users, only: [:create, :show]
-  resources :list_movie_users
+  resources :movie_lists
 
   get '/search', to: 'movies#search'
+  post '/login', to: 'auth#create'
+  post '/logout', to: 'auth#destroy'
 end

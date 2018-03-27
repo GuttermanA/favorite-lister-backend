@@ -1,5 +1,5 @@
 class ListSerializer < ActiveModel::Serializer
-  attributes :title, :movies, :updated_at
+  attributes :id, :title, :movies, :updated_at
 
   def movies
     object.movies

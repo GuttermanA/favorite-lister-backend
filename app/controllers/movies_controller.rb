@@ -5,7 +5,7 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.limit(10)
+    @movies = Movie.take(10)
     render json: @movies
   end
 end
