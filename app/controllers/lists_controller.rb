@@ -2,6 +2,7 @@ class ListsController < ApplicationController
 
   def index
     @lists = List.all
+
     render json: @lists, each_serializer: ListSerializer
   end
 
@@ -20,12 +21,13 @@ class ListsController < ApplicationController
   end
 
   def update
-    byebug
-    @list = List.find_by(id: params[:id])
+    request_body = JSON.parse(request.body.read)
+    @list = List.find_by(id: request_body["id"])
     if @list
-      params[:movies].each do |movie, index|
-        list_entry = MovieList.find_by(list_id: @list.id, movie_id: movie.id)
-        list_entry.update(position: index)
+      request_body["movies"].each_with_index do |movie, index|
+        list_entry = MovieList.find_by(list_id: @list.id, movie_id: movie["id"])
+        list_entry.position = index + 1
+        list_entry.save
       end
       render json: {message: "List #{@list.title} updated"}
     else
