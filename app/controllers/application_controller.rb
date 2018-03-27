@@ -1,9 +1,6 @@
-
-
-
 class ApplicationController < ActionController::API
   include ActionController::HttpAuthentication::Token::ControllerMethods
-  before_action :authorized, except: [:issue_token]
+  # before_action :authorized, except: [:issue_token]
 
   def issue_token(payload)
     byebug
