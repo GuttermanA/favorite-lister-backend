@@ -41,4 +41,14 @@ class ListsController < ApplicationController
       render json: {message: "Failed to update #{@list.title}"}
     end
   end
+
+  def destroy
+    byebug
+    @list = List.find_by(id: params[:id])
+    if @list.destroy
+      render json: {message: "Success, list deleted"}
+    else
+      render json: {message: "List could not be deleted"}
+    end
+  end
 end
