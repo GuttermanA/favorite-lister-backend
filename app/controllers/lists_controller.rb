@@ -43,7 +43,6 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    byebug
     @list = List.find_by(id: params[:id])
     if @list.destroy
       render json: {message: "Success, list deleted"}
