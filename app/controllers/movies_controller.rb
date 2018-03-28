@@ -4,8 +4,9 @@ class MoviesController < ApplicationController
     render json: @movies
   end
 
-  def index
-    @movies = Movie.take(10)
+  def default
+    # @movies = Movie.take(10)
+    @movies = ApiAdapter.default
     render json: @movies
   end
 end

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :movie_lists
 
   get '/search', to: 'movies#search'
+  get '/default' to: 'movies#default'
   post '/login', to: 'auth#create'
   post '/logout', to: 'auth#destroy'
 end
