@@ -24,6 +24,13 @@ class ListsController < ApplicationController
     request_body = JSON.parse(request.body.read)
     @list = List.find_by(id: request_body["id"])
     if @list
+      to_delete = @list.movies.map{|m| m.id} - request_body["movies"].map{|m| m["id"]}
+      if to_delete.length > 0
+        to_delete.each do |id|
+          list_entry = MovieList.find_by(list_id: @list.id, movie_id: id)
+          list_entry.destroy
+        end
+      end
       request_body["movies"].each_with_index do |movie, index|
         list_entry = MovieList.find_by(list_id: @list.id, movie_id: movie["id"])
         list_entry.position = index + 1
