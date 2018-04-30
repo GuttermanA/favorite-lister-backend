@@ -20,3 +20,8 @@
 config/secrets.yml.key
 # config/secrets.yml
 /scratch
+
+# Ignore application configuration
+/config/application.yml
+
+.DS_store
