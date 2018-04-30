@@ -34,5 +34,8 @@ class ApplicationController < ActionController::API
   #   render json: {message: "Not welcome" }, status: 401 unless logged_in?
   # end
 
+  def home
+    render json: {message: "Application running"}
+  end
 
 end
