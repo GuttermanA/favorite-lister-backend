@@ -20,6 +20,15 @@ class ListsController < ApplicationController
     end
   end
 
+  def show
+    @list = List.find(params[:id])
+    if @list
+      render json: @list
+    else
+      render json: {message: "List #{params[:id]} not found"}
+    end
+  end
+
   def update
     request_body = JSON.parse(request.body.read)
     @list = List.find_by(id: request_body["id"])
