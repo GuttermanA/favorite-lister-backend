@@ -6,6 +6,12 @@ This is the Rails API back-end for the React web application [favorite-lister.su
 
 **ANOTHER NOTE:** Rack cors is configured to accept requests from localhost:3001
 
+#### Frontend Demo
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=hD0RncbljAQ
+" target="_blank"><img src="http://img.youtube.com/vi/hD0RncbljAQ/0.jpg"
+alt="Demo" width="240" height="180" border="10" /></a>
+
 ## Installing
 1. Clone repository from GitHub
 2. Open terminal
