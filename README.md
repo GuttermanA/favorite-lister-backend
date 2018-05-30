@@ -4,6 +4,8 @@ This is the Rails API back-end for the React web application [favorite-lister.su
 
 **NOTE:** You will need a Movie DB API key for this app to function correctly. The key is stored in the ENV['api_key'] variable.
 
+**ANOTHER NOTE:** Rack cors is configured to accept requests from localhost:3001
+
 ## Installing
 1. Clone repository from GitHub
 2. Open terminal
@@ -20,6 +22,7 @@ bundle install
 bundle exec figaro install
 ```
 and then configure ENV in created application.yml file
+
 6. Set up database
 ```
 rake db:create
