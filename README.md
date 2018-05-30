@@ -15,33 +15,63 @@ cd favorite-lister-backend
 ```
 bundle install
 ```
-If using figaro gem for storing API keys provided with projection, run:
+5. Setup figaro gem for storing API keys and DB credentials, run:
 ```
 bundle exec figaro install
 ```
-5. Set up database
+and then configure ENV in created application.yml file
+6. Set up database
 ```
 rake db:create
 rake db:migrate
 ```
-6. Start the Rails server
+7. Start the Rails server
 ```
 rails s
 ```
-7. In browser, navigate to the url localhost:3000. This should give you a message that the application is running. Since this is an API, it will only give you JSON responses.
+8. In browser, navigate to the url localhost:3000. This should give you a message that the application is running. Since this is an API, it will only give you JSON responses.
 
 ## API Routes
-     search GET    /search(.:format)          movies#search    default GET    /default(.:format)         movies#default
-     movies GET    /movies(.:format)          movies#index
-            POST   /movies(.:format)          movies#create
-      lists GET    /lists(.:format)           lists#index
-            POST   /lists(.:format)           lists#create
-       list GET    /lists/:id(.:format)       lists#show            PATCH  /lists/:id(.:format)       lists#update
-            PUT    /lists/:id(.:format)       lists#update            DELETE /lists/:id(.:format)       lists#destroy      users POST   /users(.:format)           users#create
-       user GET    /users/:id(.:format)       users#show
-movie_lists GET    /movie_lists(.:format)     movie_lists#index            POST   /movie_lists(.:format)     movie_lists#create
- movie_list GET    /movie_lists/:id(.:format) movie_lists#show            PATCH  /movie_lists/:id(.:format) movie_lists#update
-            PUT    /movie_lists/:id(.:format) movie_lists#update            DELETE /movie_lists/:id(.:format) movie_lists#destroy
+
+#### Movies Controller
+
+```
+GET /search
+```
+Takes search term, returns response from the MovieDB API
+
+```
+GET /default
+```
+Takes no params, returns most recent movies from current year.
+
+#### Lists Controller
+
+```
+GET /lists
+```
+Returns all lists with list serializer.
+
+```
+POST /lists
+```
+Takes list in request body, returns a response with a success if list is saved and failure if list fails to save.
+
+```
+GET /lists/:id
+```
+Takes list id param. Returns list if found.
+
+```
+PATCH /lists/:id
+```
+
+Takes updated list in request body, returns a response with a success if list is updated and failure if list fails to update.
+
+```
+DELETE /lists/:id
+```
+Takes list id param. Returns success message if list deleted and failure if list is not
 
 ## Built With
 * [Ruby on Rails](http://rubyonrails.org/) - web framework
